@@ -7,11 +7,7 @@
   <title>Document</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>title</title>
-  <link rel="stylesheet" href="css/main.css" type="text/css">
-  <!--build:css css/styles.min.css-->
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/another-stylesheet.css">
-  <!--endbuild-->
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>
 <body>
 

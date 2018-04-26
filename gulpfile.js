@@ -6,7 +6,8 @@ var
   connect = require('gulp-connect'),
   nunjucksRender = require('gulp-nunjucks-render'),
   data = require('gulp-data'),
-  useref = require('gulp-useref'),
+  clean = require('gulp-clean');
+   // useref = require('gulp-useref'),
   fs = require('fs'),
 
   // development mode?
@@ -19,19 +20,24 @@ var
   }
 ;
 
-gulp.task('default', ['nunjucks','styles','serve'], function() {
+gulp.task('default', ['clean-dist','nunjucks','styles','serve'], function() {
   // place code for your default task here
 });
 
+gulp.task('clean-dist', function () {
+  return gulp.src('dist/*', {read: false})
+      .pipe(clean());
+});
+
 gulp.task('styles', function() {
-  return gulp.src(folder.src + 'scss/main.scss')
+  return gulp.src(folder.src + 'scss/styles.scss')
   .pipe(sass({
     outputStyle: 'nested',
     imagePath: 'images/',
     precision: 3,
     errLogToConsole: true
   }))
-  .pipe(gulp.dest(folder.build + 'css/'))
+  .pipe(gulp.dest(folder.build + 'css'))
   .pipe(connect.reload());
 });
 
@@ -55,6 +61,7 @@ gulp.task('html', function() {
 
 gulp.task('nunjucks', function() {
   // Gets .html and .nunjucks files in pages
+  // help: https://zellwk.com/blog/nunjucks-with-gulp/
   return gulp.src(folder.src + 'pages/**/*.+(html|nunjucks)')
   .pipe(data(function(file) {
       var data = JSON.parse(fs.readFileSync('./src/data/data.json'));
@@ -73,8 +80,8 @@ gulp.task('nunjucks', function() {
   .pipe(connect.reload());
 });
 
-gulp.task('useref', function(){
-  return gulp.src('templates/**/*')
-    .pipe(useref())
-    .pipe(gulp.dest('dist'))
-});
+// gulp.task('useref', function(){
+//   return gulp.src('templates/**/*')
+//     .pipe(useref())
+//     .pipe(gulp.dest('dist'))
+// });
