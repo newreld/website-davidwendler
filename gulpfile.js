@@ -9,6 +9,8 @@ var
   clean = require('gulp-clean');
    // useref = require('gulp-useref'),
   fs = require('fs'),
+  mergeStream = require('merge-stream');
+  rename = require('gulp-rename');
 
   // development mode?
   devBuild = (process.env.NODE_ENV !== 'production'),
@@ -19,6 +21,54 @@ var
     build: 'dist/'
   }
 ;
+
+gulp.task('portfolio', function () {
+  
+  // get portfolio.json
+  var portfolio = JSON.parse(fs.readFileSync('./src/data/portfolio.json'));
+  portfolio.numberOfEntries = Object.keys(portfolio.entries).length;
+  
+
+  var tasks = portfolio.entries.map(function(entry,index) {
+        
+    return gulp.src(folder.src + 'pages/portfolio.nunjucks')
+          .pipe(data(function(file) {
+
+              var nextEntry, previousEntry;
+
+              // check wether its first or last entry
+              if (index < (portfolio.numberOfEntries-1)) {
+                nextEntry = portfolio.entries[index+1];
+              } else {
+                nextEntry = false;
+              }
+
+              if (index > 0) {
+                previousEntry = portfolio.entries[index-1];
+              } else {
+                previousEntry = false;
+              }
+
+            // create data obj with current, next and previos object
+            var data  = {
+              current: entry, 
+              next: nextEntry,
+              previous: previousEntry
+            }
+            // console.log(data);
+            return data;
+          }))
+          // Renders template with nunjucks
+          .pipe(nunjucksRender({
+              path: [folder.src + 'templates']
+            }))
+          .pipe(rename('portfolio_' + index + '.html'))
+          // output files in app folder
+          .pipe(gulp.dest(folder.build))
+  });
+  return mergeStream(tasks);
+});
+
 
 gulp.task('default', ['clean-dist','nunjucks','styles','serve'], function() {
   // place code for your default task here
@@ -61,14 +111,9 @@ gulp.task('html', function() {
 
 gulp.task('nunjucks', function() {
   // Gets .html and .nunjucks files in pages
-  // help: https://zellwk.com/blog/nunjucks-with-gulp/
   return gulp.src(folder.src + 'pages/**/*.+(html|nunjucks)')
   .pipe(data(function(file) {
       var data = JSON.parse(fs.readFileSync('./src/data/data.json'));
-
-      // data.projects = data.projects.sort(function(a,b) {
-      //   return new Date(b.date) - new Date(a.date);
-      // });
       return data;
   }))
   // Renders template with nunjucks
