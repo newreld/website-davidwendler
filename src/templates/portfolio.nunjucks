@@ -1,12 +1,9 @@
 <!-- portfolio.nunjucks -->
-{% extends "layout.nunjucks" %}
+{% set body__class = "portfolio page-portfolio_" + index %}
+{% extends "./templates/layout.nunjucks" %}
 
 {% block content %}
 <h1>This is a portfolio page</h1>
-{% include "partials/navigation.nunjucks" %}
-
-{% import "macros/nav-macro.nunjucks" as nav %}
-{{nav.active('home')}}
 
 {# {% for image in images %} #}
  <div class="portfolio__page">

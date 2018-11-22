@@ -11,6 +11,7 @@ var
   fs = require('fs'),
   mergeStream = require('merge-stream');
   rename = require('gulp-rename');
+  svgSprite = require('gulp-svg-sprite');
 
   // development mode?
   devBuild = (process.env.NODE_ENV !== 'production'),
@@ -22,6 +23,38 @@ var
   }
 ;
 
+
+gulp.task('clean-dist', function () {
+  return gulp.src('dist/*', {read: false})
+      .pipe(clean());
+});
+
+gulp.task('styles', function() {
+  return gulp.src(folder.src + 'scss/styles.scss')
+  .pipe(sass({
+    outputStyle: 'nested',
+    imagePath: 'images/',
+    precision: 3,
+    errLogToConsole: true
+  }))
+  .pipe(gulp.dest(folder.build + 'css'))
+  .pipe(connect.reload());
+});
+
+gulp.task('serve', function(done) {
+  connect.server({
+    root: 'dist/',
+    port: 8080,
+    livereload: {
+      port: 35729
+    }
+  });
+  // gulp.watch('app/css/*.css', );
+  gulp.watch(folder.src + 'scss/**/*',gulp.series('styles'));
+  gulp.watch([folder.src + 'templates/**/*', folder.src + 'pages/**/*', folder.src + 'data/**/*'], gulp.series('portfolio','nunjucks'));
+  done();
+});
+
 gulp.task('portfolio', function () {
   
   // get portfolio.json
@@ -31,7 +64,7 @@ gulp.task('portfolio', function () {
 
   var tasks = portfolio.entries.map(function(entry,index) {
         
-    return gulp.src(folder.src + 'pages/portfolio.nunjucks')
+    return gulp.src(folder.src + 'templates/portfolio.nunjucks')
           .pipe(data(function(file) {
 
               var nextEntry, previousEntry;
@@ -51,6 +84,7 @@ gulp.task('portfolio', function () {
 
             // create data obj with current, next and previos object
             var data  = {
+              index: index,
               current: entry, 
               next: nextEntry,
               previous: previousEntry
@@ -60,7 +94,7 @@ gulp.task('portfolio', function () {
           }))
           // Renders template with nunjucks
           .pipe(nunjucksRender({
-              path: [folder.src + 'templates']
+              path: [folder.src]
             }))
           .pipe(rename('portfolio_' + index + '.html'))
           // output files in app folder
@@ -69,64 +103,46 @@ gulp.task('portfolio', function () {
   return mergeStream(tasks);
 });
 
-
-gulp.task('default', ['clean-dist','nunjucks','styles','serve'], function() {
-  // place code for your default task here
-});
-
-gulp.task('clean-dist', function () {
-  return gulp.src('dist/*', {read: false})
-      .pipe(clean());
-});
-
-gulp.task('styles', function() {
-  return gulp.src(folder.src + 'scss/styles.scss')
-  .pipe(sass({
-    outputStyle: 'nested',
-    imagePath: 'images/',
-    precision: 3,
-    errLogToConsole: true
-  }))
-  .pipe(gulp.dest(folder.build + 'css'))
-  .pipe(connect.reload());
-});
-
-gulp.task('serve', function() {
-  connect.server({
-    root: 'dist/',
-    port: 1337,
-    livereload: {
-      port: 35729
-    }
-  });
-  gulp.watch(folder.src + 'scss/**/*', ['styles']);
-  gulp.watch([folder.src + 'templates/**/*', folder.src + 'pages/**/*', folder.src + 'data/**/*'], ['nunjucks']);
-});
-
-gulp.task('html', function() {
-  return gulp.src(folder.src + 'index.html')
-  .pipe(gulp.dest(folder.build))
-  .pipe(connect.reload());
-});
-
+var manageEnvironment = function(environment) {
+  // var loader = new nunjucks.FileSystemLoader('views');
+  // environment.loader = loader;
+  // environment.addGlobal('globalTitle', 'My global title')
+}
 gulp.task('nunjucks', function() {
   // Gets .html and .nunjucks files in pages
   return gulp.src(folder.src + 'pages/**/*.+(html|nunjucks)')
   .pipe(data(function(file) {
-      var data = JSON.parse(fs.readFileSync('./src/data/data.json'));
+      var data = JSON.parse(fs.readFileSync('./src/data/index.json'));
       return data;
   }))
   // Renders template with nunjucks
   .pipe(nunjucksRender({
-      path: [folder.src + 'templates']
+      path: [folder.src]
     }))
   // output files in app folder
   .pipe(gulp.dest(folder.build))
   .pipe(connect.reload());
 });
 
-// gulp.task('useref', function(){
-//   return gulp.src('templates/**/*')
-//     .pipe(useref())
-//     .pipe(gulp.dest('dist'))
-// });
+var svgSpriteConfig = {
+  mode: {
+    symbol: {
+      dest: '',
+      sprite: 'sprite.svg'
+    }
+  }
+};
+
+gulp.task('svgSprite', function(){
+  return gulp.src(folder.src + 'assets/svg-sprite/src/*.svg')
+  .pipe(svgSprite(svgSpriteConfig))
+  .on('error', function(error) {
+    console.log(error);
+  })
+  .pipe(gulp.dest(folder.src + 'assets/svg-sprite'));
+});
+
+
+gulp.task('default', gulp.series('clean-dist','nunjucks','portfolio','styles','serve'), function() {
+  // place code for your default task here
+});
