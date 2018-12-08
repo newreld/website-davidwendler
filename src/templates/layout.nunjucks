@@ -1,4 +1,3 @@
-<!-- layout.nunjucks -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +8,14 @@
   <link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>
 <body class="page-{{ body__class }}">
-  {% include '../assets/svg-sprite/sprite.svg' %}
+  {# {% include '../assets/svg-sprite/sprite.svg' %} #}
   <article class="page__wrap">
-
   <!-- You write code for this content block in another file -->
   {% block content %} {% endblock %}
-  
+    <footer clas="footer">
+      <h2>Impressum</h2>
+      <adress>David Wendler</adress>
+    </footer>
   </article>
   <script src="js/main.js"></script>
 </body>

@@ -1,0 +1,5 @@
+{% macro set(name) %}
+<svg class="icon icon-{{ name }}">
+  <use xlink:href="assets/images/sprite.svg#{{ name }}" />
+</svg>
+{% endmacro %}
