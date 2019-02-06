@@ -6,15 +6,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>title</title>
   <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,400i,700|Work+Sans:300,400,700" rel="stylesheet">
+  {% import "./macros/svg-icon.nunjucks" as icon %}
 </head>
 <body class="page-{{ body__class }}">
   {# {% include '../assets/svg-sprite/sprite.svg' %} #}
   <article class="page__wrap">
+    <header class="header">
+      {% include "./partials/dw-logo.nunjucks" %}
+    </header>
   <!-- You write code for this content block in another file -->
   {% block content %} {% endblock %}
     <footer clas="footer">
       <h2>Impressum</h2>
-      <adress>David Wendler</adress>
+      <adress>
+        David Wendler<br/>
+        Klara-Weyl-Str. 27<br/>
+        10365 Berlin<br/>
+        +49(0)17652586823<br/>
+        mail (at) davidwendler.de<br/>
+      </adress>
     </footer>
   </article>
   <script src="js/main.js"></script>

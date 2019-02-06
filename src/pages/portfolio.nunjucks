@@ -1,0 +1,10 @@
+<!-- index.nunjucks -->
+{% set body__class="page-portfolio" %}
+{% extends "./templates/layout.nunjucks" %}
+
+{% block content %}
+  {# {% include "./templates/partials/logo.nunjucks" %} #}
+
+  Portfolio
+
+{% endblock %}

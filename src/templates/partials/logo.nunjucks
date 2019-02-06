@@ -1,2 +1,0 @@
-{% import "../macros/svg-icon.nunjucks" as icon %}
-{{ icon.set('dw_logo') }}

@@ -1,0 +1,22 @@
+.intro {
+  h1 {
+    font-size: 25px;
+
+    em {
+      color: $accent1;
+      font-style: normal;
+    }
+  }
+
+  h2 {
+    font-size: 21px;
+    font-weight: 300;
+    color: $accent1;
+  }
+
+  &__intro {
+    color: $grey40;
+  }
+
+
+}

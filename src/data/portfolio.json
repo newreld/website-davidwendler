@@ -1,12 +1,139 @@
 {
-  "entries": [
+  "featured": [
     {
-      "title": "test title one11",
+      "handle": "schulfinder",
+      "title": "Berliner Schulfinder",
+      "desc": "Finden Sie die passende Schule für ihr Kind, UX Design: Research and Usability Tests, UI Design, Webdevelopment",
+      "year": "2018",
+      "image": "2018_schulfinder-berlin.png",
+      "url": "https://interaktiv.morgenpost.de/schul-finder-berlin/"
+    },
+    {
+      "handle": "gebaeudealter",
+      "title": "Alt- oder Neubau? So wohnt Berlin",
+      "desc": "Gründerzeit-Villa, Nachkriegsblock oder Platte, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2018",
+      "image": "2018_gebaeudealter-berlin.png",
+      "url": "https://interaktiv.morgenpost.de/so-alt-wohnt-berlin/"
+    },
+    {
+      "handle": "spdsound",
+      "title": "Der Sound zum tiefen Fall der SPD",
+      "desc": "So klingt der Absturz der Sozialdemokraten, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2017",
+      "image": "2017_spd-absturz-sound.png",
+      "url": "https://interaktiv.morgenpost.de/so-alt-wohnt-berlin/"
+    },
+    {
+      "handle": "rechtewaehler",
+      "title": "Es war nicht immer der Osten – Wo Deutschland rechts wählt",
+      "desc": "In welchen der rund 11.000 Gemeinden bisher rechts gewählt wurde, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2017",
+      "image": "2017_rechte-waehler.png",
+      "url": "https://interaktiv.morgenpost.de/so-alt-wohnt-berlin/"
+    },
+    {
+      "handle": "btw17-wahlhochburgen",
+      "title": "Wo sich die Parteien auf ihre Wähler verlassen können",
+      "desc": "Dauer-Hochburgen seit 1990, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2017",
+      "image": "2017_btw17-parteien-hohburgen.png",
+      "url": "https://interaktiv.morgenpost.de/parteien-hochburgen-deutschland/"
+    },
+    {
+      "handle": "btw17-berlinwahlkarte",
+      "title": "Bundestagswahl 2017 in Berlin – Alle Stimmen der 1779 Wahllokale",
+      "desc": "So hat Berlin gewählt, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2017",
+      "image": "2017_btw17-berlinwahlkarte.png",
+      "url": "https://interaktiv.morgenpost.de/berlinwahlkarte2017/"
+    },
+    {
+      "handle": "berlinandeinerlinie",
+      "title": "So tickt Berlin an deiner Linie",
+      "desc": "Finde heraus, was die Berliner entlang von Bus, Bahn und Fähre ausmacht, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2017",
+      "image": "2017_berlin-an-deiner-linie.png",
+      "url": "https://interaktiv.morgenpost.de/berlin-an-deiner-linie/"
+    },
+    {
+      "handle": "btw17-analyse",
+      "title": "So hat Deutschland gewählt",
+      "desc": "Eine Analyse in Grafiken und Karten, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2017",
+      "image": "2017_analyse-bundestagswahl.png",
+      "url": "https://interaktiv.morgenpost.de/analyse-bundestagswahl-2017/"
+    },
+    {
+      "handle": "zugezogenenatlas",
+      "title": "Woher die Berliner wirklich kommen",
+      "desc": "Zugezogenen-Atlas, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2016",
+      "image": "2016_zugezogenen-atlas.png",
+      "url": "https://interaktiv.morgenpost.de/berliner-zugezogenen-atlas/"
+    },
+    {
+      "handle": "gruenstestaedte",
+      "title": "Das sind Deutschlands grünste Großstädte",
+      "desc": "Satellitenbilder Auswertung, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2016",
+      "image": "2016_gruenste-staedte.png",
+      "url": "https://interaktiv.morgenpost.de/gruenste-staedte-deutschlands/"
+    },
+    {
+      "handle": "abgeordneteberlin",
+      "title": "Ihr Kiez, ihr Alter, ihr Job: Das sind Berlins 160 neu gewählte Abgeordnete",
+      "desc": "Machen Sie den Check und filtern Sie die Politiker, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2016",
+      "image": "2016_abgeordnete-berlin.png",
+      "url": "https://interaktiv.morgenpost.de/abgeordnete-in-berlin/"
+    },
+    {
+      "handle": "m29",
+      "title": "M29 - Berlins Buslinie der großen Unterschiede",
+      "desc": "Statistiken zeigen die Gegensätze – Haltestelle für Haltestelle, UX & UI Design, Dataviz, Webdevelopment",
+      "year": "2015",
+      "image": "2015_m29.png",
+      "url": "https://interaktiv.morgenpost.de/m29/"
+    },
+    {
+      "handle": "laermkarte",
+      "title": "Lärmkarte Berlin – So laut ist es vor Ihrer Haustür",
+      "desc": "Wie laut ist es bei Ihnen, UX & UI Design, Dataviz, Webdevelopment, Rebrush 2018",
+      "year": "2015",
+      "image": "2015_laermkarte-berlin.png",
+      "url": "https://interaktiv.morgenpost.de/laermkarte-berlin/"
+    },
+    {
+      "handle": "istderberschonfertig",
+      "title": "Ist der BER schon fertig?",
+      "desc": "Am BER sollten längst Passagiere einchecken, UX & UI Design, Dataviz, Webdevelopment, Rebrush 2019",
+      "year": "2015",
+      "image": "2015_ist-der-ber-fertig.png",
+      "url": "http://www.istderberschonfertig.de/"
+    }
+    
+  ],
+  "all": [
+    {
+      "handle": "title1",
+      "title": "test 1%$5 @@@ #'>< /1 title one11",
       "desc": "Image one alt text1"
     },
     {
+      "handle": "title2",
       "title": "test title two2",
       "desc": "hello second world"
+    },
+    {
+      "handle": "titl3",
+      "title": "test title two3",
+      "desc": "hello 3 world"
+    },
+    {
+      "handle": "title4",
+      "title": "test title two4",
+      "desc": "hello 4 world"
     }
   ]
 }

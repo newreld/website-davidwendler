@@ -1,24 +1,23 @@
 <!-- index.nunjucks -->
-{% set body__class="index" %}
+{% set body__class="page-index" %}
 {% extends "./templates/layout.nunjucks" %}
-
 {% block content %}
-
-<header class="header">
-  {% include "./templates/partials/logo.nunjucks" %}
-  <h1>Hej, <br/>ich bin David Wendler.<br/>Ich mag es Dinge zu gestalten, die andere Menschen mögen.</h1>
+  {# {% include "./templates/partials/header.nunjucks" %} #}
+<section class="section intro">
+  <h1>Hej, <br/>ich bin David Wendler.<br/><em>Ich mag es Dinge zu gestalten, die andere Menschen mögen.</em></h1>
   <h2>Ich arbeite als UX & UI–Designer.</h2>
-  <p class="header__intro">Auf dieser Seite gibt es Projekte an denen ich gearbeitet habe, welche Erfahrungen ich bereits sammeln konnte und wo ich noch zu finden bin.</p>
-</header>
+  <p class="intro__intro">Auf dieser Seite gibt es <a href="#portfolio">Projekte</a> an denen ich gearbeitet habe, welche <a href="#experience">Erfahrungen</a> ich bereits sammeln konnte und wo ich <a href="#elsewhere">noch zu finden bin</a>.</p>
+</section>
 
-<section class="section portfolio">
-  <h2>Ausgwählte Projekte</h2>
+<section class="section portfolio" id="portfolio">
+  <h2>Ausgewählte Projekte</h2>
   <p class="portfolio__intro">Dies sind einige der Projekte an denen ich in meiner aktuellen Position als UX Visual Designer im Interaktiv Team der Funke Mediengruppe (vorher Berliner Morgenpost) gearbeitet habe. Das Team entwickelt journalistische Formate mit Grafiken, Karten, interaktiven Anwendungen und andere Storytelling Formaten.</p>
 
   <div class="portfolio__items">
-  {% for entry in entries %}
+  {% for entry in featured.slice(0, 5) %}
     <article class="portfolio__item">
-      <h4>{{ entry.title }}</h4>
+      <a href="{{ entry.url }}"><img src="assets/images/portfolio/{{ entry.image }}"/></a>
+      <a href="{{ entry.url }}"><h4>{{ entry.title }}</h4></a>
       <p>{{ entry.desc }}</p>
     </article>
   {% endfor %}
@@ -31,24 +30,24 @@
 </section>
 
 <div class="section about">
-  <section class="experience">
+  <section class="experience" id="experience">
     <h2>Erfahrung</h2>
     <p>Ich hatte die Chance bereits mehr als 15 Jahre Erfahrung primär im Bereich Webdesign zu sammeln. Die meiste Zeit im Medienbereich (Funke Mediengruppe, Berliner Morgenpost, Hamburger Abendblatt, Axel Springer, WELT).</p>
     <p>Zuletzt habe ich ich meine praktischen Erfahrungen aus dem Bereich User Experience mit einer Ausbildung als UX und Usability Professional beim artop Institut vertieft. Angefangen habe ich als Autodidakt und mit einer Ausbildung zum Mediengestalter digital/print.</p>
   </section>
   <section class="elsewhere">
     <h2>Anderswo</h2>
-    <p>Ich bin kein Fotograf, aber ich liebe es Ästethiken in Form bearbeiter Bilder festzuhalten. Meistens geht es dabei um den urbanen Raum. Das findet sich auf Instagram.</p>
+    <p>Ich bin kein Fotograf, aber ich liebe es Ästethiken in Form bearbeiteter Bilder festzuhalten. Meistens geht es dabei um den urbanen Raum. Das findet sich auf Instagram.</p>
     <ul>
-      <li>Instagram</li>
+      <li><a href="https://www.instagram.com/davidandlight">{{ icon.set('instagram') }} Instagram</a></li>
       <li class="label">Weitere Profile:</li>
-      <li>Twitter</li>
-      <li>XING</li>
-      <li>GitHub</li>
+      <li><a href="https://twitter.com/newreld">{{ icon.set('twitter') }} Twitter</li>
+      <li><a href="https://www.xing.com/profile/David_Wendler2">{{ icon.set('xing') }} XING</a></li>
+      <li><a href="https://github.com/newreld">{{ icon.set('github') }} GitHub</a></li>
   </section>
   <section class="contact">
     <h2>Kontakt</h2>
-    <p>Neben Twitter bin am besten per Mail zu erreichen.</p>
+    <p>Neben Twitter bin am besten per Mail zu erreichen: mail (at ) davidwendler.de</p>
   </section>
 </section>
 

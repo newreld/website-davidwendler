@@ -1,0 +1,19 @@
+.header {
+  margin-top: 10px;
+}
+
+.dw-logo {
+  font-size: 13px;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .icon {
+    font-size: 2em;
+    margin-right: .25em;
+    vertical-align: 0;
+    color: $accent1;
+  }
+
+}

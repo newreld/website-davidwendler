@@ -1,7 +1,60 @@
 @import './config.scss';
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-  background-color: aqua;
+html, body {
+  font: 400 100%/1.5 $body;
+  color: $black;
+  background-color:white;
+  margin: 0;
+  padding: 0;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font: 700 100%/1.2 $headline;
+  margin: .5em 0;
+}
+
+a {
+  &:link, &:visited, &:hover, &:active {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+p {
+  a:link, a:visited {
+    border-bottom: 1px solid currentColor;
+  }
+  a:hover {
+    color: white;
+    border-color: $accent1;
+    background-color: $accent1;
+  }
+  a:active {
+    background-color: $accent1-light;
+    border-color: $accent1-light;
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -.15em;
+  display: inline-block;
+  fill: currentColor;
+}
+
+.header, .section, .footer {
+  padding: 10px 7%;
+
+  h2 {
+    font-size: 25px;
+  }
+}
+
+@import './header.scss';
+@import './intro.scss';

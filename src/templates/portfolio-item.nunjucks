@@ -1,5 +1,5 @@
 <!-- portfolio.nunjucks -->
-{% set body__class = "portfolio page-portfolio_" + index %}
+{% set body__class = "page-portfolio-item page-portfolio-item_" + index %}
 {% extends "./templates/layout.nunjucks" %}
 
 {% block content %}
