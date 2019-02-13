@@ -14,18 +14,26 @@
   <p class="portfolio__intro">Dies sind einige der Projekte an denen ich in meiner aktuellen Position als UX Visual Designer im Interaktiv Team der Funke Mediengruppe (vorher Berliner Morgenpost) gearbeitet habe. Das Team entwickelt journalistische Formate mit Grafiken, Karten, interaktiven Anwendungen und andere Storytelling Formaten.</p>
 
   <div class="portfolio__items">
-  {% for entry in featured.slice(0, 5) %}
+  {% for entry in featured.slice(0, 15) %}
     <article class="portfolio__item">
-      <a href="{{ entry.url }}"><img src="assets/images/portfolio/{{ entry.image }}"/></a>
-      <a href="{{ entry.url }}"><h4>{{ entry.title }}</h4></a>
-      <p>{{ entry.desc }}</p>
+      <a href="{{ entry.url }}" class="portfolio__item-link"><img src="assets/images/portfolio/{{ entry.image }}"/>
+      <h4>{{ entry.title }}</h4>
+      <p>{{ entry.desc }}</p></a>
     </article>
   {% endfor %}
   </div>
 
   <section class="portfolio__prizes">
     <h3>Auszeichnungen</h3>
-    <p>Viele der Projekte wurden mit Journalismus und Design Preisen ausgezeichnet:</p>
+    <p>Viele der Projekte an denen ich arbeiten durfte, wurden mit Journalismus und Design Preisen ausgezeichnet:
+    <a href="http://www.malofiejgraphics.com/berliner-morgenpost-and-national-geographic-win-best-of-show-award/">Malofiej International Infographics Award <em>(Best of Show)</em></a>,
+    <a href="https://www.informationisbeautifulawards.com/news/259-the-winners-2017">Information is Beautiful Award <em>(Gold, Kategorie Best Non-English Language)</em></a>,
+    <a href="https://www.presseportal.de/pm/8218/3766362">dpa Infografik Award <em>(3. Platz Hauptkategorie, 2. Platz Kategorie Wahlen)</em></a>,
+    <a href="https://www.grimme-online-award.de/archiv/2016/preistraeger/p/d/interaktiv-team-der-berliner-morgenpost/">Grimme Online Award <em>(Kategorie Spezial)</em></a>,
+    <a href="https://www.nannen-preis.de/download/np2016_juroren_gewinner_nominierte_shortlists.pdf">Nannenpreis <em>(Kategorie Web-Reportage)</em></a>,
+    <a href="https://gewinner.adc.de/">Art Directors Club Wettbewerb <em>(Bronzenagel)</em></a> uvm.
+    </p>
+
   </section>
 </section>
 
@@ -38,17 +46,17 @@
   <section class="elsewhere">
     <h2>Anderswo</h2>
     <p>Ich bin kein Fotograf, aber ich liebe es Ästethiken in Form bearbeiteter Bilder festzuhalten. Meistens geht es dabei um den urbanen Raum. Das findet sich auf Instagram.</p>
-    <ul>
-      <li><a href="https://www.instagram.com/davidandlight">{{ icon.set('instagram') }} Instagram</a></li>
+    <ul class="elsewhere__list">
+      <li><a href="https://www.instagram.com/davidandlight">{{ icon.set('instagram') }} <span>Instagram</span></a></li>
       <li class="label">Weitere Profile:</li>
-      <li><a href="https://twitter.com/newreld">{{ icon.set('twitter') }} Twitter</li>
-      <li><a href="https://www.xing.com/profile/David_Wendler2">{{ icon.set('xing') }} XING</a></li>
-      <li><a href="https://github.com/newreld">{{ icon.set('github') }} GitHub</a></li>
+      <li><a href="https://twitter.com/newreld">{{ icon.set('twitter') }} <span>Twitter</span></a></li>
+      <li><a href="https://www.xing.com/profile/David_Wendler2">{{ icon.set('xing') }} <span>XING</span></a></li>
+      <li><a href="https://github.com/newreld">{{ icon.set('github') }} <span>GitHub</span></a></li>
   </section>
   <section class="contact">
     <h2>Kontakt</h2>
     <p>Neben Twitter bin am besten per Mail zu erreichen: mail (at ) davidwendler.de</p>
   </section>
-</section>
+</div>
 
 {% endblock %}

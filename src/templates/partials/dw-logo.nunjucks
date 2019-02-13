@@ -3,6 +3,6 @@
 <div class="dw-logo">
   <a href="/">
   {{ icon.set('dw_logo') }}
-  <strong>David Wendler</strong>
+  <span>David Wendler</span>
   </a>
 </div>

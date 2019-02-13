@@ -13,6 +13,7 @@ var
   svgo = require('gulp-svgo'),
   svgSprite = require('gulp-svg-sprite'),
   image = require('gulp-image'),
+  imageResize = require('gulp-image-resize'),
 
   // development mode?
   // devBuild = (process.env.NODE_ENV !== 'production'),
@@ -168,9 +169,15 @@ gulp.task('nunjucks', function() {
   .pipe(connect.reload());
 });
 
-gulp.task('minify-images', function(one) {
+gulp.task('minify-images', function() {
   return gulp.src(folder.src + 'assets/images/portfolio/*.+(jpg|png)')
     .pipe(image())
+    .pipe(gulp.dest(folder.src + 'assets/images/portfolio'));
+});
+gulp.task('resize-images', function() {
+  return gulp.src(folder.src + 'assets/images/portfolio/*.+(jpg|png)')
+    .pipe(imageResize({ width : 800, imageMagick: true }))
+    .pipe(rename(function (path) { path.basename += "-thumbnail"; }))
     .pipe(gulp.dest(folder.src + 'assets/images/portfolio'));
 });
 

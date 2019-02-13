@@ -1,0 +1,52 @@
+.portfolio {
+  background-color: $grey80;
+  &__items {
+  }
+  &__item {
+    margin: 2em 0;
+
+    a {
+      &:link,
+      &:visited {}
+      &:hover {
+        img {
+          box-shadow: 0 10px 30px rgba(black, .2);
+
+        }
+        h4 {
+          text-decoration: underline;
+        }
+        &:active {
+          img {
+            border-color: $accent1-light;
+          }   
+        }
+      }
+    }
+    
+    img {
+      border: 10px solid white;
+      display: block;
+      box-shadow: 0 8px 20px rgba(black,.1);
+      box-sizing: border-box;
+      transition: box-shadow .5s;
+    }
+
+    h4 {
+      margin: 1em 0 0;
+    }
+    p {
+      font-family: $sans;
+      line-height: 1.3;
+      font-size: 13px;
+      color: $grey40;
+    }
+  }
+  &__prizes {
+    color: $grey40;
+    p {
+      color: $grey40;
+    }  
+  }
+
+}

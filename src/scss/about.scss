@@ -1,0 +1,40 @@
+.elsewhere {
+  &__list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: .25em 0;
+      font-size: 1.2em;
+    }
+
+    @include link();
+
+    a {
+      &:link,
+      &:visited {
+        text-decoration: none;
+      }
+      &:hover,
+      &:active {
+        span {
+          text-decoration: none;
+        }
+      }
+    }
+    .icon {
+      margin-right: .25em;
+    }
+    span {
+      text-decoration: underline;
+    }
+
+    .label {
+      color: $grey40;
+      font-family: $sans;
+      margin: 1em 0;
+    }
+
+  }
+
+}

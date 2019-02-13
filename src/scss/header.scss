@@ -4,10 +4,13 @@
 
 .dw-logo {
   font-size: 13px;
+  font-family: $sans;
+  font-weight: 600;
   a {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    color: $black;
   }
   .icon {
     font-size: 2em;

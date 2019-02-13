@@ -1,7 +1,7 @@
 @import './config.scss';
 
 html, body {
-  font: 400 100%/1.5 $body;
+  font: 400 14px/1.6 $body;
   color: $black;
   background-color:white;
   margin: 0;
@@ -9,8 +9,8 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font: 700 100%/1.2 $headline;
-  margin: .5em 0;
+  font: 700 100%/1.2 $sans;
+  margin: 1em 0;
 }
 
 a {
@@ -20,19 +20,23 @@ a {
   }
 }
 
-p {
+@mixin link() {
   a:link, a:visited {
-    border-bottom: 1px solid currentColor;
+    text-decoration: underline;
   }
   a:hover {
     color: white;
-    border-color: $accent1;
+    text-decoration: none;
     background-color: $accent1;
   }
   a:active {
     background-color: $accent1-light;
-    border-color: $accent1-light;
+    text-decoration: none;
   }
+}
+
+p {
+ @include link();
 }
 
 img {
@@ -53,8 +57,16 @@ img {
 
   h2 {
     font-size: 25px;
+    text-decoration: underline;
   }
+}
+
+section > p {
+  color: $grey30;
 }
 
 @import './header.scss';
 @import './intro.scss';
+@import './portfolio.scss';
+@import './about.scss';
+@import './footer.scss';
