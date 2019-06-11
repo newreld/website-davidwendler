@@ -9,7 +9,7 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font: 700 100%/1.2 $sans;
+  font: 700 100%/1.2 $headline;
   margin: 1em 0;
 }
 
@@ -25,19 +25,16 @@ a {
     text-decoration: underline;
   }
   a:hover {
-    color: white;
-    text-decoration: none;
-    background-color: $accent1;
+    color: $accent1;
   }
   a:active {
-    background-color: $accent1-light;
+    background-color: $accent1;
+    color : white;
     text-decoration: none;
   }
 }
+@include link();
 
-p {
- @include link();
-}
 
 img {
   width: 100%;
@@ -56,14 +53,68 @@ img {
   padding: 10px 7%;
 
   h2 {
-    font-size: 25px;
-    text-decoration: underline;
+    font-size: 6vw;
   }
+
+  h3 {
+    font-size: 5vw;
+    font-weight: 300;
+  }
+  
+  h4 {
+    font-size: 1em;
+  }
+
 }
 
 section > p {
   color: $grey30;
 }
+
+@media screen and (min-width: 375px) {
+  html, body {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  html, body {
+    font-size: 16px;
+  }
+}
+
+
+@media screen and (min-width: 500px) {
+  html, body {
+    font-size: 17px;
+  }
+  .header, .section, .footer {
+    h3 {
+      font-size: 4.5vw;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .header, .section, .footer {
+    h3 {
+      font-size: 3vw;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header, .section, .footer {
+  
+    h2 {
+      font-size: 38px;
+    }
+    h3 {
+      font-size: 24px;
+    }
+  }
+}
+
 
 @import './header.scss';
 @import './intro.scss';

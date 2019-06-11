@@ -14,6 +14,7 @@ var
   svgSprite = require('gulp-svg-sprite'),
   image = require('gulp-image'),
   imageResize = require('gulp-image-resize'),
+  concat = require('gulp-concat'),
 
   // development mode?
   // devBuild = (process.env.NODE_ENV !== 'production'),
@@ -95,6 +96,7 @@ gulp.task('serve', function(done) {
   });
   gulp.watch(folder.src + 'scss/**/*', gulp.series('styles'));
   gulp.watch([folder.src + 'templates/**/*', folder.src + 'pages/**/*', folder.src + 'data/**/*'], gulp.series('portfolio','nunjucks'));
+  gulp.watch(folder.src +  'js/*', gulp.series('js'));
   gulp.watch(folder.src + 'assets/images/svg-sprite/src/*', gulp.series('svgsprite'));
   gulp.watch(folder.src +  'assets/images/portfolio/*', gulp.series('images'));
   done();
@@ -169,21 +171,36 @@ gulp.task('nunjucks', function() {
   .pipe(connect.reload());
 });
 
+gulp.task('js', function() {
+  return gulp.src([folder.src + 'js/vendor/intersection-observer.js', folder.src + 'js/main.js'])
+  .pipe(concat('main.js'))
+  .pipe(gulp.dest(folder.tmp + 'js'));
+});
+
 gulp.task('minify-images', function() {
-  return gulp.src(folder.src + 'assets/images/portfolio/*.+(jpg|png)')
+  return gulp.src(folder.src + 'assets/images/portfolio/**/*.+(jpg|png)')
     .pipe(image())
     .pipe(gulp.dest(folder.src + 'assets/images/portfolio'));
 });
-gulp.task('resize-images', function() {
+
+gulp.task('resize-images-thumbnail', function() {
   return gulp.src(folder.src + 'assets/images/portfolio/*.+(jpg|png)')
     .pipe(imageResize({ width : 800, imageMagick: true }))
     .pipe(rename(function (path) { path.basename += "-thumbnail"; }))
-    .pipe(gulp.dest(folder.src + 'assets/images/portfolio'));
+    .pipe(gulp.dest(folder.src + 'assets/images/portfolio/thumbnail'));
+});
+gulp.task('resize-images-color', function() {
+  return gulp.src(folder.src + 'assets/images/portfolio/*.+(jpg|png)')
+    .pipe(imageResize({ width: 1, height: 1, imageMagick: true }))
+    .pipe(rename(function (path) { path.basename += "-color"; }))
+    .pipe(gulp.dest(folder.src + 'assets/images/portfolio/color'));
 });
 
+gulp.task('resize-images', gulp.series('resize-images-thumbnail', 'resize-images-color'));
+
 gulp.task('images', function() {
-  return gulp.src(folder.src + 'assets/images/portfolio/*.+(jpg|png)')
-  .pipe(gulp.dest(folder.tmp + 'assets/images/portfolio'));
+  return gulp.src(folder.src + 'assets/images/**/*.+(jpg|png)')
+  .pipe(gulp.dest(folder.tmp + 'assets/images/'));
 });
 
 gulp.task('svgsprite', function(){
@@ -204,4 +221,4 @@ gulp.task('minify-svgsprite', function(){
 });
 
 
-gulp.task('default', gulp.series('clean','nunjucks','portfolio','styles', 'svgsprite','images','serve'));
+gulp.task('default', gulp.series('clean','nunjucks','portfolio','js','styles', 'svgsprite','images','serve'));

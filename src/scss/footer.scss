@@ -1,8 +1,17 @@
 .footer {
-  background-color: $grey80;
-  color: $grey40;
+  // background-color: $accent2-bg;
+  // color: rgba($accent2,.5);
+  color: $grey50;
 
+  .icon {
+    font-size: 2em;
+    margin: .5em 0;
+  }
+  
   h2 {
     text-decoration: none;
+    font-weight: 700;
+    font-size: 1em;
+    font-family: $body;
   }
 }

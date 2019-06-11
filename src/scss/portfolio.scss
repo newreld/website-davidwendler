@@ -1,25 +1,45 @@
 .portfolio {
-  background-color: $grey80;
-  &__items {
+
+  &__intro {
+    max-width: 40em;
   }
+
+  &__items {
+    max-width: 1300px;
+  }
+
   &__item {
-    margin: 2em 0;
+    margin: 2em auto 2em 0;
+    max-width: 400px;
+    font-size: 5vw;
+
+    // @include link();
 
     a {
-      &:link,
-      &:visited {}
+      display: block;
+      text-decoration: none;
+      // &:link,
+      // &:visited {}
       &:hover {
+        background-color: transparent;
+        
         img {
           box-shadow: 0 10px 30px rgba(black, .2);
-
         }
-        h4 {
+        h4, p {
+          color: $accent1;
+        }
+        span {
           text-decoration: underline;
         }
         &:active {
-          img {
-            border-color: $accent1-light;
-          }   
+          h4, p {
+            background-color: $accent1;
+            color: white;
+            span {
+              text-decoration: none;
+            }
+          }
         }
       }
     }
@@ -33,20 +53,94 @@
     }
 
     h4 {
-      margin: 1em 0 0;
+      margin: 1.2em 0 0;
+      // font-weight: 400;
+      // span {
+      //   text-decoration: underline;
+      // }
     }
+
     p {
-      font-family: $sans;
-      line-height: 1.3;
+      line-height: 1.45;
       font-size: 13px;
       color: $grey40;
+      margin-top: .5em;
     }
   }
+
   &__prizes {
+    border-top: 1px solid $grey80;
+    border-bottom: 1px solid $grey80;
     color: $grey40;
     p {
+      max-width: 60em;
       color: $grey40;
-    }  
+    }
   }
+}
 
+@media screen and (min-width: 375px) {
+  .portfolio {
+    &__item {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .portfolio {
+    &__item {
+      font-size: 4.5vw;
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .portfolio {
+    &__items {
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      grid-column-gap: 30px;
+      justify-items: start;
+    }
+    &__item {
+      margin: 1em 0;
+      font-size: 3vw;
+
+      h4 {
+        min-height: 2em;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .portfolio {
+    &__item {
+      font-size: 1em;
+      h4 {
+        font-size: 24px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 960px) {
+  .portfolio {
+    &__items {
+      grid-template-columns: 2fr 2fr 2fr;
+    }
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .portfolio {
+    &__items {
+      grid-template-columns: 2fr 2fr 2fr 2fr;
+    }
+  }
 }

@@ -1,22 +1,38 @@
 .header {
-  margin-top: 10px;
+  padding-top: 1.5em;
+  // background-color: $accent2-bg;
 }
 
 .dw-logo {
-  font-size: 13px;
-  font-family: $sans;
-  font-weight: 600;
+  font-size: .8em;
+  font-family: $headline;
+  font-weight: 700;
+
   a {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    color: $black;
+    text-decoration: none;
+    
+    // &:hover {
+    //   text-decoration: underline;  
+    // }
   }
+
+  span {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+  }
+
   .icon {
     font-size: 2em;
     margin-right: .25em;
     vertical-align: 0;
-    color: $accent1;
   }
+}
 
+@media screen and (min-width: 768px) {
+  .header {
+    padding-top: 3em;
+  }
 }
