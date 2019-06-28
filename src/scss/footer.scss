@@ -1,7 +1,7 @@
 .footer {
-  // background-color: $accent2-bg;
-  // color: rgba($accent2,.5);
+  background-color: $grey30;
   color: $grey50;
+  margin-top: 3em;
 
   .icon {
     font-size: 2em;
@@ -12,6 +12,13 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 1em;
-    font-family: $body;
+    font-family: $serif;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .footer {
+    margin-top: 5em;
   }
 }

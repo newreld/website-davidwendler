@@ -5,7 +5,7 @@
   <title>Document</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>title</title>
-  <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,400i,700,800,900|Bitter:400,400i,700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,400i,700,800,900,900i|Bitter:400,400i,700&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="css/styles.css" type="text/css">
   {% import "./macros/svg-icon.nunjucks" as icon %}
 </head>

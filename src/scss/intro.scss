@@ -1,47 +1,143 @@
+@keyframes animatedBackground {
+	from { background-position: 0% 0; }
+	to { background-position: 100% 0; }
+}
+
 .intro {
  
-  background-color: $grey90;
+  background-color: $accent2-bg;
+  background-image: linear-gradient(135deg, #FFEBCA 0%, #D5FFEC 25%, #D5F3FF 50%, #F8D5FF 75%, #FFEBCA 100%);
+  background-size: 1200%;
+  animation: animatedBackground 17s infinite alternate;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // padding: 15px;
-  margin: 10px 7%;
-
+  padding: 5% 3.5vw;
+  margin: 0 3.5vw;
+  box-sizing: border-box;
+  
+  h1, h1 em, h2, .intro__intro {
+    transition: color  1s;
+  }
+  
   h1 {
-    font-size: 7vw;
-    margin-bottom: 0;
+    font-size: 8.2vw;
+    margin: 0;
     max-width: 16em;
+    mix-blend-mode:color-burn;
+    color: rgba($black,1);
+    line-height: 1.15;
 
     em {
-      color: $grey40;
       font-style: normal;
+      color: rgba($black,.7);
     }
   }
-
+  
   h2 {
-    font-weight: 400;
-    color: $grey40;
+    font-weight: 300;
+    font-style: normal;
     text-decoration: none;
     margin: 1.5em 0;
+    color: rgba($black,.7);
+    mix-blend-mode:color-burn;
+    text-transform: none;
+    font-size: 6vw;
+    line-height: 1.15;
   }
-
+  
   &__intro {
-    color: $grey40;
     max-width: 40em;
+    color: rgba($black,.7);
+    mix-blend-mode:color-burn;
+    font-family: $serif;
+
+  }
+  &:hover {
+    h1, h1 em, h2, .intro__intro {
+      color: rgba($black,1);
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .intro {
+    padding: 5% 5vw;
+    margin: 0 5vw;
   }
 }
 
 @media screen and (min-width: 768px) {
   .intro {
     h1 {
-      font-size: 56px;
+      font-size: 6vw;
     }
     h2 {
-      font-size: 38px;
+      font-size: 5vw;
     }
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .intro {
+    h1 {
+      font-size: 5vw;
+    }
+    h2 {
+      font-size: 4vw;
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .intro {
+    h1 {
+      font-size: 4.5vw;
+    }
+    h2 {
+      font-size: 3.5vw;
+    }
+  }
+}
+
+// @media screen and (min-width: 1600px) {
+//   .intro {
+//     h1 {
+//       font-size: 4vw;
+//     }
+//     h2 {
+//       font-size: 3vw;
+//     }
+//   }
+// }
+
+@media screen and (min-width: 1800px) {
+  .intro {
+    h1 {
+      font-size: 4vw;
+    }
+    h2 {
+      font-size: 3vw;
+    }
+  }
+}
+
+
+@media screen and (min-width: 2000px) {
+  .intro {
+    h1 {
+      font-size: 84px
+    }
+    h2 {
+      font-size: 60px;
+    }
+  }
+}
+
+
+
+
 
 // @media screen and (min-width: 960px) {
 //   .intro {

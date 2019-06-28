@@ -16,7 +16,9 @@
   <div class="portfolio__items">
   {% for entry in featured.slice(0, 15) %}
     <article class="portfolio__item">
-      <a href="{{ entry.url }}" class="portfolio__item-link"><img src="assets/images/portfolio/color/{{ entry.image }}-color.png" data-src="assets/images/portfolio/thumbnail/{{ entry.image }}-thumbnail.png" class="lazy"/>
+      <a href="{{ entry.url }}" class="portfolio__item-link">
+      <div class="portfolio__item-preview"><img src="assets/images/portfolio/color/{{ entry.image }}-color.png" data-src="assets/images/portfolio/thumbnail/{{ entry.image }}-thumbnail.png" class="lazy"/>
+      </div>
       <h4><span>{{ entry.title }}</span></h4>
       <p>{{ entry.desc }}</p></a>
     </article>

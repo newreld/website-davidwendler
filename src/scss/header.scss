@@ -1,22 +1,18 @@
 .header {
-  padding-top: 1.5em;
-  // background-color: $accent2-bg;
+  padding: 1.5em 3.5vw;
 }
 
 .dw-logo {
   font-size: .8em;
-  font-family: $headline;
+  font-family: $sans;
   font-weight: 700;
+  text-align: right;
 
   a {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: flex-end;
     text-decoration: none;
-    
-    // &:hover {
-    //   text-decoration: underline;  
-    // }
   }
 
   span {
@@ -31,8 +27,15 @@
   }
 }
 
+@media screen and (min-width: 400px) {
+  .header {
+    padding: 1.5em 5vw;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .header {
     padding-top: 3em;
+    padding-bottom: 3em;
   }
 }

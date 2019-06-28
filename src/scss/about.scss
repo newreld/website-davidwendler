@@ -1,5 +1,9 @@
-// .about {
-// }
+.about {
+  max-width: 60em;
+  p {
+    font-family: $serif;
+  }
+}
 
 .elsewhere {
   &__list {
@@ -8,6 +12,8 @@
 
     li {
       margin: .25em 0;
+      font-weight: 700;
+      font-size: 1.2em;
     }
 
 
@@ -19,9 +25,10 @@
       &:visited {
         text-decoration: none;
       }
-      &:hover,
       &:active {
-        color: $accent1;
+        span {
+          text-decoration: none;
+        }
       }
     }
     .icon {
@@ -31,6 +38,7 @@
     .label {
       color: $grey40;
       margin: 1em 0;
+      font-weight: 400;
     }
   }
 }
@@ -38,7 +46,7 @@
 @media screen and (min-width: 960px) {
   .about {
     display: grid;
-    grid-gap: 0 2em;
+    grid-column-gap:  4em;
     grid-template-columns: 2fr 2fr;
 
     section {
