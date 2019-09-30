@@ -22,12 +22,15 @@ var
   // folders
   folder = {
     src: 'src/',
-    tmp: 'tmp/',
-    dist: 'dist/'
+    out: 'tmp/'
   },
-
+  
   devMode = true,
-  setProductionMode = function(done) { devMode = false; done(); },
+  setProductionMode = function(done) { 
+    devMode = false;
+    folder.out = 'dist/';
+    done();
+  },
   
   urlString = function(str) {
     return encodeURIComponent(str.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, ''));
@@ -41,36 +44,16 @@ var
       }
     }
   }
-  
 ;
 
-// gulp.task('a', function (done) {
-//   console.log(devMode);
-//   done();
-// });
-
-// gulp.task('b', function (done) {
-//   console.log(devMode);
-//   done();
-// });
-
-// gulp.task('builder', gulp.series('a', function (done) {
-//   setProductionMode();
-//   console.log("success");
-//   done();
-// },'b'));
-
-
+// CLEAN
 gulp.task('clean', function () {
-  var out = folder.tmp;
-  if(!devMode) { out = folder.dist };
-  return gulp.src(out + '*', {read: false})
+  return gulp.src(folder.out + '*', {read: false})
       .pipe(clean());
 });
-
 gulp.task('clean:prod', gulp.series(setProductionMode,'clean'));
 
-
+// STYLES
 gulp.task('styles', function() {
   return gulp.src(folder.src + 'scss/styles.scss')
   .pipe(sass({
@@ -79,16 +62,14 @@ gulp.task('styles', function() {
     precision: 3,
     errLogToConsole: true
   }))
-  .pipe(gulp.dest(folder.tmp + 'css'))
+  .pipe(gulp.dest(folder.out + 'css'))
   .pipe(connect.reload());
 });
 
-
+// SERVER
 gulp.task('serve', function(done) {
-  var out = folder.tmp;
-  if(!devMode) { out = folder.dist };
   connect.server({
-    root: out,
+    root: folder.out,
     port: 8080,
     livereload: {
       port: 35729
@@ -98,14 +79,12 @@ gulp.task('serve', function(done) {
   gulp.watch([folder.src + 'templates/**/*', folder.src + 'pages/**/*', folder.src + 'data/**/*'], gulp.series('portfolio','nunjucks'));
   gulp.watch(folder.src +  'js/*', gulp.series('js'));
   gulp.watch(folder.src + 'assets/images/svg-sprite/src/*', gulp.series('svgsprite'));
-  gulp.watch(folder.src +  'assets/images/portfolio/*', gulp.series('images'));
+  gulp.watch(folder.src +  'assets/images/**/*', gulp.series('images'));
   done();
 });
-
-
 gulp.task('serve:prod', gulp.series(setProductionMode, 'serve'));
 
-
+// PORTFOLIO
 gulp.task('portfolio', function () {
   
   // get portfolio.json
@@ -113,48 +92,42 @@ gulp.task('portfolio', function () {
   portfolio.numberOfEntries = Object.keys(portfolio.featured).length;
 
   var tasks = portfolio.featured.map(function(entry,index) {
-
-        
     return gulp.src(folder.src + 'templates/portfolio-item.nunjucks')
-          .pipe(data(function(file) {
-
-              var nextEntry, previousEntry;
-
-              // check wether its first or last entry
-              if (index < (portfolio.numberOfEntries-1)) {
-                nextEntry = portfolio.featured[index+1];
-              } else {
-                nextEntry = false;
-              }
-
-              if (index > 0) {
-                previousEntry = portfolio.featured[index-1];
-              } else {
-                previousEntry = false;
-              }
-
-            // create data obj with current, next and previous object
-            var data  = {
-              index: index,
-              current: entry, 
-              next: nextEntry,
-              previous: previousEntry
-            }
-            // console.log(data);
-            return data;
-          }))
-          // Renders template with nunjucks
-          .pipe(nunjucksRender({
-              path: [folder.src]
-            }))
-          .pipe(rename('portfolio_' + urlString(entry.handle) + '.html'))
-          // output files in app folder
-          .pipe(gulp.dest(folder.tmp))
+      .pipe(data(function(file) {
+        var nextEntry, previousEntry;
+        // check wether its first or last entry
+        if (index < (portfolio.numberOfEntries-1)) {
+          nextEntry = portfolio.featured[index+1];
+        } else {
+          nextEntry = false;
+        }
+        if (index > 0) {
+          previousEntry = portfolio.featured[index-1];
+        } else {
+          previousEntry = false;
+        }
+        // create data obj with current, next and previous object
+        var data  = {
+          index: index,
+          current: entry, 
+          next: nextEntry,
+          previous: previousEntry
+        }
+        // console.log(data);
+        return data;
+      }))
+      // Renders template with nunjucks
+      .pipe(nunjucksRender({
+          path: [folder.src]
+        }))
+      .pipe(rename('portfolio_' + urlString(entry.handle) + '.html'))
+      // output files in app folder
+      .pipe(gulp.dest(folder.out))
   });
   return mergeStream(tasks);
 });
 
-
+// NUNJUCKS
 gulp.task('nunjucks', function() {
   // Gets .html and .nunjucks files in pages
   return gulp.src(folder.src + 'pages/**/*.+(html|nunjucks)')
@@ -167,22 +140,18 @@ gulp.task('nunjucks', function() {
       path: [folder.src]
     }))
   // output files in app folder
-  .pipe(gulp.dest(folder.tmp))
+  .pipe(gulp.dest(folder.out))
   .pipe(connect.reload());
 });
 
+// JAVASCRIPT
 gulp.task('js', function() {
   return gulp.src([folder.src + 'js/vendor/intersection-observer.js', folder.src + 'js/main.js'])
   .pipe(concat('main.js'))
-  .pipe(gulp.dest(folder.tmp + 'js'));
+  .pipe(gulp.dest(folder.out + 'js'));
 });
 
-gulp.task('minify-images', function() {
-  return gulp.src(folder.src + 'assets/images/portfolio/**/*.+(jpg|png)')
-    .pipe(image())
-    .pipe(gulp.dest(folder.src + 'assets/images/portfolio'));
-});
-
+// IMAGES
 gulp.task('resize-images-thumbnail', function() {
   return gulp.src(folder.src + 'assets/images/portfolio/*.+(jpg|png)')
     .pipe(imageResize({ width : 800, imageMagick: true }))
@@ -198,9 +167,15 @@ gulp.task('resize-images-color', function() {
 
 gulp.task('resize-images', gulp.series('resize-images-thumbnail', 'resize-images-color'));
 
+gulp.task('minify-images', function() {
+  return gulp.src(folder.src + 'assets/images/portfolio/**/*.+(jpg|png)')
+    .pipe(image())
+    .pipe(gulp.dest(folder.src + 'assets/images/portfolio'));
+});
+
 gulp.task('images', function() {
   return gulp.src(folder.src + 'assets/images/**/*.+(jpg|png)')
-  .pipe(gulp.dest(folder.tmp + 'assets/images/'));
+  .pipe(gulp.dest(folder.out + 'assets/images/'));
 });
 
 gulp.task('svgsprite', function(){
@@ -209,10 +184,9 @@ gulp.task('svgsprite', function(){
   .on('error', function(error) {
     console.log(error);
   })
-  .pipe(gulp.dest(folder.tmp + 'assets/images/'))
+  .pipe(gulp.dest(folder.out + 'assets/images/'))
   .pipe(connect.reload());
 });
-
 
 gulp.task('minify-svgsprite', function(){
    return gulp.src(folder.src + 'assets/images/svg-sprite/src/*')
@@ -220,5 +194,7 @@ gulp.task('minify-svgsprite', function(){
       .pipe(gulp.dest(folder.src + 'assets/images/svg-sprite/src/'));
 });
 
+// COMBO
+gulp.task('default', gulp.series('clean','nunjucks','js','styles', 'svgsprite','images','serve'));
 
-gulp.task('default', gulp.series('clean','nunjucks','portfolio','js','styles', 'svgsprite','images','serve'));
+gulp.task('build', gulp.series(setProductionMode,'clean','nunjucks','js','styles','svgsprite','images'));

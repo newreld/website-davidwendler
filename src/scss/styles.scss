@@ -100,6 +100,9 @@ img {
 }
 
 @media screen and (min-width: 1400px) {
+  html, body {
+    font-size: 18px;
+  }
   .header, .section, .footer {
     h2 {
       font-size: 4.5vw;
@@ -124,13 +127,15 @@ img {
 }
 
 @media screen and (min-width: 2000px) {
+  html, body {
+    font-size: 19px;
+  }
   .header, .section, .footer {
     h2 {
       font-size: 78px;
     }
   }
 }
-
 
 @import './header.scss';
 @import './intro.scss';

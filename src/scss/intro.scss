@@ -6,9 +6,9 @@
 .intro {
  
   background-color: $accent2-bg;
-  background-image: linear-gradient(135deg, #FFEBCA 0%, #D5FFEC 25%, #D5F3FF 50%, #F8D5FF 75%, #FFEBCA 100%);
-  background-size: 1200%;
-  animation: animatedBackground 17s infinite alternate;
+  background-image: linear-gradient(135deg, #F8D5FF 0%, #D5F3FF 25%, #D5FFEC 50%, #FFEBCA 75%,  #F8D5FF 100%);
+  background-size: 1100%;
+  animation: animatedBackground 20s infinite alternate;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
@@ -101,17 +101,6 @@
   }
 }
 
-// @media screen and (min-width: 1600px) {
-//   .intro {
-//     h1 {
-//       font-size: 4vw;
-//     }
-//     h2 {
-//       font-size: 3vw;
-//     }
-//   }
-// }
-
 @media screen and (min-width: 1800px) {
   .intro {
     h1 {
@@ -123,7 +112,6 @@
   }
 }
 
-
 @media screen and (min-width: 2000px) {
   .intro {
     h1 {
@@ -134,16 +122,3 @@
     }
   }
 }
-
-
-
-
-
-// @media screen and (min-width: 960px) {
-//   .intro {
-//     height: 80vh;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//   }
-// }

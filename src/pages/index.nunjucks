@@ -45,7 +45,7 @@
     <p>Ich hatte die Chance bereits mehr als 15 Jahre Erfahrung primär im Bereich Webdesign zu sammeln. Die meiste Zeit im Medienbereich (Funke Mediengruppe, Berliner Morgenpost, Hamburger Abendblatt, Axel Springer, WELT).</p>
     <p>Zuletzt habe ich ich meine praktischen Erfahrungen aus dem Bereich User Experience mit einer Ausbildung als UX und Usability Professional beim artop Institut vertieft. Angefangen habe ich als Autodidakt und mit einer Ausbildung zum Mediengestalter digital/print.</p>
   </section>
-  <section class="elsewhere">
+  <section class="elsewhere" id="elsewhere">
     <h2>Anderswo</h2>
     <p>Ich bin kein Fotograf, aber ich liebe es Ästethiken in Form bearbeiteter Bilder festzuhalten. Meistens geht es dabei um den urbanen Raum. Das findet sich auf Instagram.</p>
     <ul class="elsewhere__list">
