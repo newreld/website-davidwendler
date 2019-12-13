@@ -29,6 +29,6 @@
     "merge-stream": "^2.0.0"
   },
   "dependencies": {
-    "npm": "^6.9.0"
+    "npm": "^6.13.4"
   }
 }
