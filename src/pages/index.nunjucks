@@ -4,14 +4,14 @@
 {% block content %}
   {# {% include "./templates/partials/header.nunjucks" %} #}
 <section class="section intro">
-  <h1>Hej, <br/>ich bin David Wendler.<br/><em>Ich mag es Dinge zu gestalten, die andere Menschen mögen.</em></h1>
+  <h1>Hej, <br/>ich bin David Wendler.<br/><em>Ich liebe es Dinge zu gestalten, die andere Menschen toll finden.</em></h1>
   <h2>Ich arbeite als UX & UI–Designer.</h2>
   <p class="intro__intro">Auf dieser Seite gibt es <a href="#portfolio">Projekte</a> an denen ich gearbeitet habe, welche <a href="#experience">Erfahrungen</a> ich bereits sammeln konnte und wo ich <a href="#elsewhere">noch zu finden bin</a>.</p>
 </section>
 
 <section class="section portfolio" id="portfolio">
   <h2>Ausgewählte Projekte</h2>
-  <p class="portfolio__intro">Dies sind einige der Projekte an denen ich in meiner aktuellen Position als UX Visual Designer im Interaktiv Team der Funke Mediengruppe (vorher Berliner Morgenpost) gearbeitet habe. Das Team entwickelt journalistische Formate mit Grafiken, Karten, interaktiven Anwendungen und andere Storytelling Formaten.</p>
+  <p class="portfolio__intro">Dies sind einige der Projekte an denen ich in meiner <span class="strike">aktuellen</span> Position als UX Visual Designer im Interaktiv Team der Funke Mediengruppe (vorher Berliner Morgenpost) gearbeitet habe. Das Team entwickelt journalistische Formate mit Grafiken, Karten, interaktiven Anwendungen und andere Storytelling Formaten.</p>
 
   <div class="portfolio__items">
   {% for entry in featured.slice(0, 15) %}
@@ -42,7 +42,7 @@
 <div class="section about">
   <section class="experience" id="experience">
     <h2>Erfahrung</h2>
-    <p>Ich hatte die Chance bereits mehr als 15 Jahre Erfahrung primär im Bereich Webdesign zu sammeln. Die meiste Zeit im Medienbereich (Funke Mediengruppe, Berliner Morgenpost, Hamburger Abendblatt, Axel Springer, WELT).</p>
+    <p>Ich konnte bereits mehr als 15 Jahre Erfahrung im Bereich Webdesign sammeln. Die meiste Zeit davon im Medienbereich (Funke Mediengruppe, Berliner Morgenpost, Hamburger Abendblatt, Axel Springer, WELT).</p>
     <p>Zuletzt habe ich ich meine praktischen Erfahrungen aus dem Bereich User Experience mit einer Ausbildung als UX und Usability Professional beim artop Institut vertieft. Angefangen habe ich als Autodidakt und mit einer Ausbildung zum Mediengestalter digital/print.</p>
   </section>
   <section class="elsewhere" id="elsewhere">
@@ -57,7 +57,7 @@
   </section>
   <section class="contact">
     <h2>Kontakt</h2>
-    <p>Neben Twitter bin am besten per Mail zu erreichen: mail (at ) davidwendler.de</p>
+    <p>Neben Twitter bin am besten per Mail zu erreichen: mail&nbsp;(at)&nbsp;davidwendler.de</p>
   </section>
 </div>
 

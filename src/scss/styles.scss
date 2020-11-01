@@ -28,6 +28,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+::selection {
+  background-color: $accent2;
+  color: white;
+}
+
 @include link();
 
 img {
@@ -42,6 +47,11 @@ img {
   display: inline-block;
   color: inherit;
   fill: currentColor;
+}
+
+.strike {
+  text-decoration: line-through;
+  opacity: .8;
 }
 
 .header, .section, .footer {
